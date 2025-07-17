@@ -27,15 +27,15 @@ public class PanelProgress extends  JPanel{
         bufferStatus.setBounds(155, 37, 500, 23);
         bufferStatus.setBorder(BorderFactory.createLineBorder(Color.black));
         bufferStatus.setForeground(Color.GREEN);
-        bufferStatus.setMaximum(controller.getMaxBufferSize()); //setting maximum value of the progress bar
+        bufferStatus.setMaximum(30); //setting maximum value of the progress bar
         add(bufferStatus);
-        JLabel lblmax = new JLabel(String.format("Max capacity: %s", controller.getMaxBufferSize()));
+        JLabel lblmax = new JLabel(String.format("Max capacity: %s", 30));
         lblmax.setBounds(10, 42, 126, 13);
         add(lblmax);
 
     }
 
     public void updateProgressbar(int value) {
-        bufferStatus.setValue(value);
+        bufferStatus.setValue(controller.getCurrentBufferSize());
     }
 }

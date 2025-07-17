@@ -19,19 +19,27 @@ public class View {
     private PanelProducers pnlProducers;
     private PanelConsumers pnlConsumers;
 
-    public void Start()
+    public void start()
     {
         frame = new JFrame();
         frame.setBounds(0, 0, 730, 526);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLayout(null);
-        frame.setTitle("Food Supply System");
-        InitializeGUI();					// Fill in components
+        frame.setTitle("Items Supply System");
+
+        InitializeGUI(); // Fill in components
+
+        // Start a Swing Timer to update progress bar every 500ms
+        new javax.swing.Timer(500, e -> {
+            int size = controller.getCurrentBufferSize();
+            updateProgressbar(size);
+        }).start();
 
         frame.setVisible(true);
-        frame.setResizable(false);			// Prevent user from change size
-        frame.setLocationRelativeTo(null);	// Start middle screen
+        frame.setResizable(false); // Prevent user from changing size
+        frame.setLocationRelativeTo(null); // Center window on screen
     }
+
 
     /**
      * Sets up the GUI with components
@@ -53,24 +61,24 @@ public class View {
         pnlBuffer.updateProgressbar(value);
     }
 
-    /*
-    public void updateConInfo(int type, int items) {
-        pnlConsumers.updateConInfo( type,  items);
 
-    }
-
-    public void updateFoodList(String foodItem, String name) {
-        pnlConsumers.updateProductList(foodItem, name);
-     }
-
-    public void setStatus(String consumerName, String status)
-    {
-        pnlConsumers.setStatus(consumerName, status);
-      }
-
-    public boolean getContinueLoading(String consumerName) {
-       return pnlConsumers.getContinueLoading(consumerName);
-    }
-    */
+//    public void updateConInfo(int type, int items) {
+//        pnlConsumers.updateConInfo( type,  items);
+//
+//    }
+//
+//    public void updateFoodList(String foodItem, String name) {
+//        pnlConsumers.updateProductList(foodItem, name);
+//     }
+//
+//    public void setStatus(String consumerName, String status)
+//    {
+//        pnlConsumers.setStatus(consumerName, status);
+//      }
+//
+//    public boolean getContinueLoading(String consumerName) {
+//       return pnlConsumers.getContinueLoading(consumerName);
+//    }
+//
 
 }

@@ -1,46 +1,48 @@
 package controller;
-//import model.*;
-import view.*;
 
-
-import java.util.ArrayList;
+import model.Consumer;
+import model.Producer;
+import model.SharedBuffer;
+import view.View;
 
 public class Controller {
- /*   private Consumer[] consumers = new Consumer[3];
-    private Consumer[] consumerBackup = new Consumer[3];
-    private Producer[] producers = new Producer[3];
-    private Buffer buffer;*/
-    private View view;
-    private final int maxBufferSize = 20;
+    private final SharedBuffer buffer = new SharedBuffer();
+    private final Producer[] producers = new Producer[3];
+    private final Consumer[] consumers = new Consumer[3];
+    private final View view;
 
     public Controller() {
-       // create and setup producers, consumers, main view and start it
-        setup();
-    }
-
-    private void setup()
-    {
         view = new View(this);
-        view.Start();
+        view.start();  // initialize GUI
     }
 
+    public void startProducer(int index) {
+        if (producers[index] == null || !producers[index].isAlive()) {
+            producers[index] = new Producer(buffer);
+            producers[index].start();
+        }
+    }
+
+    public void stopProducer(int index) {
+        if (producers[index] != null) {
+            producers[index].interrupt();
+        }
+    }
 
     public void startConsumer(int index) {
-      }
-    public void stopConsumer(int index) {
-     }
-    public void startProducer(int index) {
+        if (consumers[index] == null || !consumers[index].isAlive()) {
+            consumers[index] = new Consumer(buffer);
+            consumers[index].start();
         }
-    public void stopProducer(int index) {
     }
 
-    public int getMaxBufferSize() {
-        return maxBufferSize;
+    public void stopConsumer(int index) {
+        if (consumers[index] != null) {
+            consumers[index].interrupt();
+        }
     }
 
-    public synchronized void updateProgressBar() {
-        //view.updateProgressbar(buffer.currentBufferSize());
+    public int getCurrentBufferSize() {
+        return buffer.getCurrentBufferSize();
     }
-
-
 }

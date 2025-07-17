@@ -25,12 +25,12 @@ public class PanelProducers extends JPanel {
 
         //Producer panel
         JPanel pnlScan = new JPanel();
-        pnlScan.setBorder(BorderFactory.createTitledBorder(BorderFactory.createLineBorder(Color.black), " Producer: x " ));
+        pnlScan.setBorder(BorderFactory.createTitledBorder(BorderFactory.createLineBorder(Color.black), " Producer 1 " ));
         pnlScan.setBounds(6, 19, 217, 100);
         pnlScan.setLayout(null);
 
         //Status
-        lblStatusS = new JLabel("Staus Idle/Stop/Producing");
+        lblStatusS = new JLabel("Staus: Idle");
         lblStatusS.setBounds(10, 31, 200, 13);
         pnlScan.add(lblStatusS);
 
@@ -40,6 +40,7 @@ public class PanelProducers extends JPanel {
         btnStartS.addActionListener(l -> {
             controller.startProducer(0);   //TO DO
             btnStartS.setEnabled(false);
+            lblStatusS.setText("Status: Producing");
         }); //actionlistener to controller method
         pnlScan.add(btnStartS);
 
@@ -49,6 +50,7 @@ public class PanelProducers extends JPanel {
         btnStopS.addActionListener(l -> {
             controller.stopProducer(0);  //TO DO
             btnStartS.setEnabled(true);
+            lblStatusS.setText("Status: Stopped");
         }); //actionlistener to controller method
         pnlScan.add(btnStopS);
 
@@ -61,12 +63,12 @@ public class PanelProducers extends JPanel {
 
     private void createProducer2() {
         JPanel pnlArla = new JPanel();
-        pnlArla.setBorder(BorderFactory.createTitledBorder(BorderFactory.createLineBorder(Color.black)," Producer: xx "));
+        pnlArla.setBorder(BorderFactory.createTitledBorder(BorderFactory.createLineBorder(Color.black)," Producer 2 "));
         pnlArla.setBounds(6, 139, 217, 100);
         pnlArla.setLayout(null);
 
         //status
-        lblStatusA = new JLabel("Status Idle/Stop/Producing");
+        lblStatusA = new JLabel("Status: Idle");
         lblStatusA.setBounds(10, 31, 200, 13);
         pnlArla.add(lblStatusA);
 
@@ -76,7 +78,8 @@ public class PanelProducers extends JPanel {
         btnStartA.addActionListener(l -> {
             controller.startProducer(1);   //TO DO
             btnStartA.setEnabled(false);
-        }); //actionlistener to controller method
+            lblStatusA.setText("Status: Producing");
+        });
         pnlArla.add(btnStartA);
 
         //Button Stop
@@ -85,6 +88,7 @@ public class PanelProducers extends JPanel {
         btnStopA.addActionListener(l -> {
             controller.stopProducer(1);
             btnStartA.setEnabled(true);
+            lblStatusA.setText("Status: Stopped");
         }); //actionlistener to controller method
         pnlArla.add(btnStopA);
 
@@ -98,11 +102,11 @@ public class PanelProducers extends JPanel {
 
     private void createProducer3() {
         JPanel pnlAxfood = new JPanel();
-        pnlAxfood.setBorder(BorderFactory.createTitledBorder(BorderFactory.createLineBorder(Color.black)," Producer: xxx "));
+        pnlAxfood.setBorder(BorderFactory.createTitledBorder(BorderFactory.createLineBorder(Color.black)," Producer 3 "));
         pnlAxfood.setBounds(6, 262, 217, 100);
         pnlAxfood.setLayout(null);
 
-        lblStatusX = new JLabel("Status Idle/Stop/Producing");
+        lblStatusX = new JLabel("Status: Idle");
         lblStatusX.setBounds(10, 31, 200, 13);
         pnlAxfood.add(lblStatusX);
 
@@ -111,7 +115,9 @@ public class PanelProducers extends JPanel {
         btnStartX.setBounds(10, 59, 125, 23);
         btnStartX.addActionListener(l -> {
             controller.startProducer(2);  //TO DO
-            btnStartX.setEnabled(false);}); //actionlistener to controller method and disable button
+            btnStartX.setEnabled(false);
+            lblStatusX.setText("Status: Producing");
+        });
         pnlAxfood.add(btnStartX);
 
         //Button stop
@@ -120,7 +126,8 @@ public class PanelProducers extends JPanel {
         btnStopX.addActionListener(l -> {
             controller.stopProducer(2);  //TO DO
              btnStartX.setEnabled(true);
-            }); //actionlistener to controller method
+            lblStatusX.setText("Status: Stopped");
+            });
         pnlAxfood.add(btnStopX);
 
         add(pnlAxfood);
