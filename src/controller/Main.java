@@ -9,7 +9,5 @@ public class Main {
         Controller controller = new Controller();
         SharedBuffer sharedBuffer = new SharedBuffer();
 
-//        Producer producer = new Producer(sharedBuffer);
-//        producer.generatedItems();
     }
 }

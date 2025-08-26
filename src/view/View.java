@@ -62,23 +62,23 @@ public class View {
     }
 
 
-//    public void updateConInfo(int type, int items) {
-//        pnlConsumers.updateConInfo( type,  items);
-//
-//    }
-//
-//    public void updateFoodList(String foodItem, String name) {
-//        pnlConsumers.updateProductList(foodItem, name);
-//     }
-//
-//    public void setStatus(String consumerName, String status)
-//    {
-//        pnlConsumers.setStatus(consumerName, status);
-//      }
-//
-//    public boolean getContinueLoading(String consumerName) {
-//       return pnlConsumers.getContinueLoading(consumerName);
-//    }
-//
+    public void updateConInfo(int type, int items) {
+        pnlConsumers.updateConInfo( type,  items);
+
+    }
+
+    public void updateFoodList(String itemId, String consumerName) {
+        pnlConsumers.updateProductList(itemId, consumerName);
+     }
+
+    public void setStatus(String consumerName, String status)
+    {
+        pnlConsumers.setStatus(consumerName, status);
+      }
+
+    public boolean getContinueLoading(String consumerName) {
+       return pnlConsumers.getContinueLoading(consumerName);
+    }
+
 
 }
