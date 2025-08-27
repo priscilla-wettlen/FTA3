@@ -15,14 +15,14 @@ public class Producer extends Thread {
         try {
             while (true) {
                 String item = "Item#" + itemId;
-                String[] producedItemsArray = new String[30];
+                String[] producedItemsArray = new String[100];
                 sharedBuffer.produce(item);
 
                 if (itemId < producedItemsArray.length) {
                     producedItemsArray[itemId] = item;
                     itemId++;
                 }
-                Thread.sleep(1000); // simulate production delay
+                Thread.sleep(500);
             }
         } catch (InterruptedException e) {
             System.out.println("Producer stopped.");

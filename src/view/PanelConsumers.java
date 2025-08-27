@@ -4,6 +4,7 @@ import controller.Controller;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ItemEvent;
 
 public class PanelConsumers extends JPanel {
 
@@ -48,6 +49,15 @@ public class PanelConsumers extends JPanel {
         chkIcaCont = new JCheckBox("Continue load");
         chkIcaCont.setBounds(7, 39, 130, 23);
         pnlICA.add(chkIcaCont);
+        chkIcaCont.addItemListener(e -> {
+            if (e.getStateChange() == ItemEvent.SELECTED) {
+                controller.updateStatus("ICA", "Active");
+                controller.startConsumer(0);
+            } else {
+                controller.updateStatus("ICA", "Idle");
+                controller.stopConsumer(0);
+            }
+        });
 
         // start loading
         btnIcaStart = new JButton("Start Loading");
@@ -108,6 +118,15 @@ public class PanelConsumers extends JPanel {
         chkCoopCont = new JCheckBox("Continue load");
         chkCoopCont.setBounds(7, 39, 130, 17);
         pnlCOOP.add(chkCoopCont);
+        chkCoopCont.addItemListener(e -> {
+            if (e.getStateChange() == ItemEvent.SELECTED) {
+                controller.updateStatus("Coop", "Active");
+                controller.startConsumer(1);
+            } else {
+                controller.updateStatus("Coop", "Idle");
+                controller.stopConsumer(1);
+            }
+        });
 
         // Start button
         btnCoopStart = new JButton("Start Loading");
@@ -172,6 +191,15 @@ public class PanelConsumers extends JPanel {
         chkCGCont = new JCheckBox("Continue load");
         chkCGCont.setBounds(7, 39, 130, 17);
         pnlCG.add(chkCGCont);// All done, add to consumers panel
+        chkCGCont.addItemListener(e -> {
+            if (e.getStateChange() == ItemEvent.SELECTED) {
+                controller.updateStatus("City Gross", "Active");
+                controller.startConsumer(2);
+            } else {
+                controller.updateStatus("City Gross", "Idle");
+                controller.stopConsumer(2);
+            }
+        });
 
         //Start button
         btnCGStart = new JButton("Start Loading");

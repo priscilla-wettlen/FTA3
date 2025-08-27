@@ -18,7 +18,7 @@ public class Controller {
 
     public Controller() {
         int index = 0;
-        consumer = new Consumer(buffer, index, consumerName, this);
+        consumer = new Consumer(buffer, consumerName, this);
         view = new View(this);
         view.start();  // initialize GUI
     }
@@ -46,7 +46,7 @@ public class Controller {
                 default -> throw new IllegalArgumentException("Invalid consumer index: " + index);
             }
 
-            consumers[index] = new Consumer(buffer, index, consumerName, this);
+            consumers[index] = new Consumer(buffer, consumerName, this);
             consumers[index].start();
         }
     }
